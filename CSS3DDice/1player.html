@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  
+  <title>Dice</title>
+
+  <link rel="stylesheet" href="diceStyle.css">
+  <script type="text/javascript" src="dice.js"></script>
+
+  <style>
+	.controls {
+		margin-top: 30px;
+		clear: both;
+	}
+	
+	.diceArea {
+	width: 100%;
+	float: left;
+	}
+  </style>
+  
+  <script type="text/javascript">
+	
+	var initDiceArea = function(name) {
+		//diceAreaDiv should be a div containing another div with class 'diceHolder'.
+		//You're welcome to add elements into th diceArea div, but not the diceHolder div (or they may get clobbered).
+		var diceAreaDiv = document.getElementById(name);
+
+		//The name can be used later to access the object with DiceArea.Areas[name].
+		var diceArea = new DiceArea(diceAreaDiv, name);
+
+		//Optional: this function is called whenever the sum of the values on the dice change.
+		diceArea.displaySum = function(sum) {
+			diceAreaDiv.getElementsByClassName('diceTotal')[0].innerHTML = sum;
+		}
+
+		diceArea.addDie();
+		return;
+	}
+	
+	var init = function() {
+		initDiceArea('diceArea1');
+	} 
+  </script>
+</head>
+<body onload="init()">
+
+	<h1 id="heading">Dice</h1>
+  
+	<div id="diceArea1" class="diceArea">
+		<h2>Player 1</h2>
+		<h2>Total: <span class="diceTotal"></span></h2>
+		<div id="diceHolder" class="diceHolder">
+			
+		</div>
+		<div class="controls">
+			<button type="button" onClick="DiceArea.Areas['diceArea1'].rollDice()">roll</button>
+			<button type="button" onClick="DiceArea.Areas['diceArea1'].addDie()">add die</button>
+			<button type="button" onClick="DiceArea.Areas['diceArea1'].removeLast()">remove die</button>
+		</div>
+	</div>
+ 
+  <footer>
+    
+  </footer>
+
+</body>
+</html>
