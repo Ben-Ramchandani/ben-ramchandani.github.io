@@ -1,7 +1,7 @@
 set -e
 
 apt-get update && apt-get upgrade -y
-apt-get remove dhcp5 -y
+apt-get remove dhcpcd5 -y
 apt-get install --no-install-recommends -y xserver-xorg xserver-xorg-video-fbdev xinit pciutils xinput xfonts-100dpi xfonts-75dpi xfonts-scalable chromium-browser xdotool unclutter
 
 cat > /home/pi/run_chrome.sh << EOL
