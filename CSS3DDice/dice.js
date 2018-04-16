@@ -34,7 +34,7 @@ Die.cubeFaces = [ [0, 0, 0], [90, 0, 0], [0, -90, 0], [0, 90, 0], [270, 0, 0], [
 
 Die.prototype.roll = function() {
 	var randInt = Math.floor( Math.random() * 6 ); //0 <= randInt <= 5.
-	var angles = Die.cubeFaces[randInt];
+	var angles = Die.cubeFaces[randInt].slice();
 	
 	for (var i = 0; i<3; i++) {
 		angles[i] += 360 * (Math.floor( Math.random()*3) - 1);
