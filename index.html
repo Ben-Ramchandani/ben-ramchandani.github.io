@@ -8,13 +8,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="diceStyle.css">
+    <script type="text/javascript" src="dice.js"></script>
+    <script>
+        var diceArea1;
+        document.addEventListener("DOMContentLoaded", function (event) {
+            diceArea1 = new DiceArea(
+                document.getElementById('diceHolder'),
+                function (newTotal) {
+                    document.getElementById("diceTotal").innerText = newTotal;
+                },
+                1,
+            )
+        });
+
+        function addDie() {
+            diceArea1.addDie();
+            document.getElementById("removeDieButton").classList.remove("disabled");
+        }
+
+        function removeLast() {
+            if (diceArea1.diceCount > 1) {
+                if (diceArea1.removeLast() <= 1) {
+                    document.getElementById("removeDieButton").classList.add("disabled");
+                }
+            }
+        }
+    </script>
+
+    <title>CSS 3D Dice</title>
 </head>
 
 <body>
-    <h1>Hello, world!</h1>
-    <div class="container">
-        <!-- Content here -->
+    <div class="container bg-light p-2">
+        <h1>Dice</h1>
+
+        <div id="diceArea1" class="diceArea">
+            <h2>Total:
+                <span id="diceTotal"></span>
+            </h2>
+            <div id="diceHolder" class="d-flex flex-wrap">
+
+            </div>
+            <div class="controls">
+                <button type="button" class="btn btn-primary m-2" onClick="diceArea1.rollDice()">Roll all</button>
+                <button type="button" class="btn btn-primary m-2" onClick="addDie()">Add die</button>
+                <button type="button" class="btn btn-primary m-2 disabled" id="removeDieButton" onClick="removeLast()">Remove die</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

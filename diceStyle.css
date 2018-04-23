@@ -1,0 +1,64 @@
+.dieContainer {
+	width: 200px;
+	height: 200px;
+	margin: 2em;
+	perspective: 2000px;
+}
+
+.dieContainer * {
+	box-sizing: content-box;
+}
+
+.die {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: transform 3s;
+}
+
+.die figure {
+	z-index: 100;
+	margin: 0;
+	display: block;
+	position: absolute;
+	width: 196px;
+	height: 196px;
+	border: 2px solid black;
+	line-height: 196px;
+	font-size: 120px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	backface-visibility: visible;
+}
+
+.die .front {
+	background: hsla( 0, 100%, 50%, 0.8);
+	transform: translateZ( 100px);
+}
+
+.die .back {
+	background: hsla( 60, 100%, 45%, 0.85);
+	transform: rotateX( -180deg) translateZ( 100px);
+}
+
+.die .right {
+	background: hsla( 120, 100%, 50%, 0.8);
+	transform: rotateY( 90deg) translateZ( 100px);
+}
+
+.die .left {
+	background: hsla( 180, 100%, 50%, 0.8);
+	transform: rotateY( -90deg) translateZ( 100px);
+}
+
+.die .top {
+	background: hsla( 240, 100%, 50%, 0.8);
+	transform: rotateX( 90deg) translateZ( 100px);
+}
+
+.die .bottom {
+	background: hsla( 300, 100%, 50%, 0.8);
+	transform: rotateX( -90deg) translateZ( 100px);
+}
